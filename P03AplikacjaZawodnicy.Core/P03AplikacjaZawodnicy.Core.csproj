@@ -62,7 +62,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelBazyDanych.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Repositories\MiastaRepostiory.cs" />
     <Compile Include="Repositories\TrenerzyRepository.cs" />
+    <Compile Include="Repositories\SkocznieRepostiory.cs" />
     <Compile Include="Repositories\ZawodnicyRepostiory.cs" />
     <Compile Include="Tools\PDFManager.cs" />
     <Compile Include="Tools\PolaczenieZBaza.cs" />

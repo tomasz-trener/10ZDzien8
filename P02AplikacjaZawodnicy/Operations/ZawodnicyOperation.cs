@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace P02AplikacjaZawodnicy.Operations
 {
+    /// <summary>
+    /// Klasa obsługjaca podstawowe operacje na zawodnikach 
+    /// </summary>
     internal class ZawodnicyOperation
     {
 

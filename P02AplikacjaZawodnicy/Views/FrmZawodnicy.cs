@@ -111,5 +111,17 @@ namespace P02AplikacjaZawodnicy.Views
             string katalog = AppDomain.CurrentDomain.BaseDirectory;
             wbPrzegladrka.Navigate(katalog+sciezka);
         }
+
+        private void btnSkocznie_Click(object sender, EventArgs e)
+        {
+            FrmSkocznie frmSkocznie = new FrmSkocznie();
+            frmSkocznie.Show();
+        }
+
+        private void btnMiasta_Click(object sender, EventArgs e)
+        {
+            FrmMiasta frmMiasta = new FrmMiasta();
+            frmMiasta.Show();
+        }
     }
 }

@@ -16,7 +16,10 @@ namespace P03AplikacjaZawodnicy.Core.Core.Repositories
             return db.Zawodnik.ToArray();
         }
 
-
+        /// <summary>
+        /// To metoda do tworzenia zaowdnika
+        /// </summary>
+        /// <param name="z">Nowy Zawodnik do dodania do bazy danych </param>
         public void DodajZawodnika(Zawodnik z)
         {
             ModelBazyDanychDataContext db = new ModelBazyDanychDataContext();

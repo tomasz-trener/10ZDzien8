@@ -12,4 +12,20 @@
       <Column Name="waga" Member="Waga" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.skocznie" Member="Skocznia">
+    <Type Name="Skocznia">
+      <Column Name="id_skoczni" Member="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_miasta" Member="IdMiasta" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="nazwa_skoczni" Member="Nazwa" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="k" Member="K" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sedz" Member="Sedz" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="kraj_skoczni" Member="Kraj" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.miasta" Member="Miasto">
+    <Type Name="Miasto">
+      <Column Name="id_miasta" Member="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nazwa_miasta" Member="Nazwa" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
 </Database>

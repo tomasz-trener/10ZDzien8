@@ -33,6 +33,12 @@ namespace P03AplikacjaZawodnicy.Core.Repositories
     partial void InsertZawodnik(Zawodnik instance);
     partial void UpdateZawodnik(Zawodnik instance);
     partial void DeleteZawodnik(Zawodnik instance);
+    partial void InsertSkocznia(Skocznia instance);
+    partial void UpdateSkocznia(Skocznia instance);
+    partial void DeleteSkocznia(Skocznia instance);
+    partial void InsertMiasto(Miasto instance);
+    partial void UpdateMiasto(Miasto instance);
+    partial void DeleteMiasto(Miasto instance);
     #endregion
 		
 		public ModelBazyDanychDataContext() : 
@@ -70,6 +76,22 @@ namespace P03AplikacjaZawodnicy.Core.Repositories
 			get
 			{
 				return this.GetTable<Zawodnik>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Skocznia> Skocznia
+		{
+			get
+			{
+				return this.GetTable<Skocznia>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Miasto> Miasto
+		{
+			get
+			{
+				return this.GetTable<Miasto>();
 			}
 		}
 	}
@@ -279,6 +301,274 @@ namespace P03AplikacjaZawodnicy.Core.Repositories
 					this._Waga = value;
 					this.SendPropertyChanged("Waga");
 					this.OnWagaChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.skocznie")]
+	public partial class Skocznia : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _IdMiasta;
+		
+		private string _Nazwa;
+		
+		private System.Nullable<int> _K;
+		
+		private System.Nullable<int> _Sedz;
+		
+		private string _Kraj;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnIdMiastaChanging(string value);
+    partial void OnIdMiastaChanged();
+    partial void OnNazwaChanging(string value);
+    partial void OnNazwaChanged();
+    partial void OnKChanging(System.Nullable<int> value);
+    partial void OnKChanged();
+    partial void OnSedzChanging(System.Nullable<int> value);
+    partial void OnSedzChanged();
+    partial void OnKrajChanging(string value);
+    partial void OnKrajChanged();
+    #endregion
+		
+		public Skocznia()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_skoczni", Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_miasta", Storage="_IdMiasta", DbType="VarChar(50)")]
+		public string IdMiasta
+		{
+			get
+			{
+				return this._IdMiasta;
+			}
+			set
+			{
+				if ((this._IdMiasta != value))
+				{
+					this.OnIdMiastaChanging(value);
+					this.SendPropertyChanging();
+					this._IdMiasta = value;
+					this.SendPropertyChanged("IdMiasta");
+					this.OnIdMiastaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="nazwa_skoczni", Storage="_Nazwa", DbType="VarChar(50)")]
+		public string Nazwa
+		{
+			get
+			{
+				return this._Nazwa;
+			}
+			set
+			{
+				if ((this._Nazwa != value))
+				{
+					this.OnNazwaChanging(value);
+					this.SendPropertyChanging();
+					this._Nazwa = value;
+					this.SendPropertyChanged("Nazwa");
+					this.OnNazwaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="k", Storage="_K", DbType="Int")]
+		public System.Nullable<int> K
+		{
+			get
+			{
+				return this._K;
+			}
+			set
+			{
+				if ((this._K != value))
+				{
+					this.OnKChanging(value);
+					this.SendPropertyChanging();
+					this._K = value;
+					this.SendPropertyChanged("K");
+					this.OnKChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="sedz", Storage="_Sedz", DbType="Int")]
+		public System.Nullable<int> Sedz
+		{
+			get
+			{
+				return this._Sedz;
+			}
+			set
+			{
+				if ((this._Sedz != value))
+				{
+					this.OnSedzChanging(value);
+					this.SendPropertyChanging();
+					this._Sedz = value;
+					this.SendPropertyChanged("Sedz");
+					this.OnSedzChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="kraj_skoczni", Storage="_Kraj", DbType="VarChar(255)")]
+		public string Kraj
+		{
+			get
+			{
+				return this._Kraj;
+			}
+			set
+			{
+				if ((this._Kraj != value))
+				{
+					this.OnKrajChanging(value);
+					this.SendPropertyChanging();
+					this._Kraj = value;
+					this.SendPropertyChanged("Kraj");
+					this.OnKrajChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.miasta")]
+	public partial class Miasto : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Nazwa;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNazwaChanging(string value);
+    partial void OnNazwaChanged();
+    #endregion
+		
+		public Miasto()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_miasta", Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="nazwa_miasta", Storage="_Nazwa", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string Nazwa
+		{
+			get
+			{
+				return this._Nazwa;
+			}
+			set
+			{
+				if ((this._Nazwa != value))
+				{
+					this.OnNazwaChanging(value);
+					this.SendPropertyChanging();
+					this._Nazwa = value;
+					this.SendPropertyChanged("Nazwa");
+					this.OnNazwaChanged();
 				}
 			}
 		}

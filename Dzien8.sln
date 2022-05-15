@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P02AplikacjaZawodnicy", "P0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P03AplikacjaZawodnicy.Core", "P03AplikacjaZawodnicy.Core\P03AplikacjaZawodnicy.Core.csproj", "{1884DE06-5757-4100-9948-62193CAE629A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P04Dziedziczenie", "P04Dziedziczenie\P04Dziedziczenie.csproj", "{B6C64088-6BD7-4452-BCE2-F1DC64DE3518}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1884DE06-5757-4100-9948-62193CAE629A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1884DE06-5757-4100-9948-62193CAE629A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1884DE06-5757-4100-9948-62193CAE629A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6C64088-6BD7-4452-BCE2-F1DC64DE3518}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6C64088-6BD7-4452-BCE2-F1DC64DE3518}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6C64088-6BD7-4452-BCE2-F1DC64DE3518}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6C64088-6BD7-4452-BCE2-F1DC64DE3518}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
