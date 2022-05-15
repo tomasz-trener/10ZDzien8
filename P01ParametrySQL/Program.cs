@@ -26,6 +26,7 @@ namespace P01ParametrySQL
                 Console.WriteLine(e[2] + " " + e[3]);
             }
 
+     
             Console.ReadKey();
         }
     }

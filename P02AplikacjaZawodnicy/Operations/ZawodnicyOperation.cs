@@ -31,10 +31,10 @@ namespace P02AplikacjaZawodnicy.Operations
                 Waga = z.Waga,
             };
         }
-        public ZawodnikVM[] PodajZawodnikowZBazy()
+        public ZawodnikVM[] PodajZawodnikowZBazy(string filtr =null, string sortowanie=null)
         {
             ZawodnicyRepository zr = new ZawodnicyRepository();
-            var zawodnicy = zr.WczytajZawodnikow();
+            var zawodnicy = zr.WczytajZawodnikow(filtr, sortowanie);
 
             // rolą operacji jest (miedzy innymi)  zeby przetransformowac obiekt bazodanowy na obiekt ViewModel, który bedzie wyswietlany na widoku 
             

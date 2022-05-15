@@ -30,7 +30,7 @@ namespace P02AplikacjaZawodnicy.Views
         public void Odswiez()
         {
             ZawodnicyOperation zo = new ZawodnicyOperation();
-            ZawodnikVM[] zawodnicy = zo.PodajZawodnikowZBazy();
+            ZawodnikVM[] zawodnicy = zo.PodajZawodnikowZBazy(txtFiltr.Text, cbSortowanie.Text);
             lbDane.DataSource = zawodnicy;
             lbDane.DisplayMember = "Wiersz"; // to musi być właściwość (a nie pole)
         }

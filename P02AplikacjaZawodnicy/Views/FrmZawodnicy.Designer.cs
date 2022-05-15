@@ -37,10 +37,14 @@ namespace P02AplikacjaZawodnicy.Views
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnRaportPDF = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnMiasta = new System.Windows.Forms.Button();
             this.btnSkocznie = new System.Windows.Forms.Button();
             this.lbNieaktywni = new System.Windows.Forms.ListBox();
             this.wbPrzegladrka = new System.Windows.Forms.WebBrowser();
-            this.btnMiasta = new System.Windows.Forms.Button();
+            this.txtFiltr = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbSortowanie = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -48,9 +52,9 @@ namespace P02AplikacjaZawodnicy.Views
             // lbDane
             // 
             this.lbDane.FormattingEnabled = true;
-            this.lbDane.Location = new System.Drawing.Point(22, 33);
+            this.lbDane.Location = new System.Drawing.Point(22, 72);
             this.lbDane.Name = "lbDane";
-            this.lbDane.Size = new System.Drawing.Size(208, 251);
+            this.lbDane.Size = new System.Drawing.Size(208, 212);
             this.lbDane.TabIndex = 0;
             this.lbDane.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbDane_MouseDown);
             this.lbDane.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbDane_MouseMove);
@@ -130,6 +134,16 @@ namespace P02AplikacjaZawodnicy.Views
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Program";
             // 
+            // btnMiasta
+            // 
+            this.btnMiasta.Location = new System.Drawing.Point(6, 106);
+            this.btnMiasta.Name = "btnMiasta";
+            this.btnMiasta.Size = new System.Drawing.Size(75, 23);
+            this.btnMiasta.TabIndex = 6;
+            this.btnMiasta.Text = "Miasta";
+            this.btnMiasta.UseVisualStyleBackColor = true;
+            this.btnMiasta.Click += new System.EventHandler(this.btnMiasta_Click);
+            // 
             // btnSkocznie
             // 
             this.btnSkocznie.Location = new System.Drawing.Point(6, 77);
@@ -159,21 +173,52 @@ namespace P02AplikacjaZawodnicy.Views
             this.wbPrzegladrka.Size = new System.Drawing.Size(252, 242);
             this.wbPrzegladrka.TabIndex = 8;
             // 
-            // btnMiasta
+            // txtFiltr
             // 
-            this.btnMiasta.Location = new System.Drawing.Point(6, 106);
-            this.btnMiasta.Name = "btnMiasta";
-            this.btnMiasta.Size = new System.Drawing.Size(75, 23);
-            this.btnMiasta.TabIndex = 6;
-            this.btnMiasta.Text = "Miasta";
-            this.btnMiasta.UseVisualStyleBackColor = true;
-            this.btnMiasta.Click += new System.EventHandler(this.btnMiasta_Click);
+            this.txtFiltr.Location = new System.Drawing.Point(51, 12);
+            this.txtFiltr.Name = "txtFiltr";
+            this.txtFiltr.Size = new System.Drawing.Size(179, 20);
+            this.txtFiltr.TabIndex = 9;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(22, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(23, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Filtr";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(22, 44);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(60, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Sortowanie";
+            // 
+            // cbSortowanie
+            // 
+            this.cbSortowanie.FormattingEnabled = true;
+            this.cbSortowanie.Items.AddRange(new object[] {
+            "Imie",
+            "Nazwisko",
+            "Kraj"});
+            this.cbSortowanie.Location = new System.Drawing.Point(88, 41);
+            this.cbSortowanie.Name = "cbSortowanie";
+            this.cbSortowanie.Size = new System.Drawing.Size(142, 21);
+            this.cbSortowanie.TabIndex = 13;
             // 
             // FrmZawodnicy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(880, 293);
+            this.Controls.Add(this.cbSortowanie);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtFiltr);
             this.Controls.Add(this.wbPrzegladrka);
             this.Controls.Add(this.lbNieaktywni);
             this.Controls.Add(this.groupBox2);
@@ -184,6 +229,7 @@ namespace P02AplikacjaZawodnicy.Views
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -201,6 +247,10 @@ namespace P02AplikacjaZawodnicy.Views
         private System.Windows.Forms.WebBrowser wbPrzegladrka;
         private System.Windows.Forms.Button btnSkocznie;
         private System.Windows.Forms.Button btnMiasta;
+        private System.Windows.Forms.TextBox txtFiltr;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbSortowanie;
     }
 }
 

@@ -1,0 +1,13 @@
+﻿
+wersja podstawowa:
+Tworzysz program do generowania raportów w
+postaci plików : .CSV, .HTML, .SQL
+Każdy z plików posiada zawartość (treść), rozmiar, autora, sciezka
+Każdy z plików to powinna być osobna klasa.
+Każdy z plików posiada także metodę: „Zapisz”, która zapisuje
+plik na dysk w miejsce ścieżki (własnej). Plik na dysk zostaje zapisany
+z właściwym rozszerzeniem. Tj. HTML ma rozszerzenie .HTML itd..
+Zawartość pliku także może być różna różna.
+Stworz klasy szczegółowe i ogólne korzystając z dziedziczenia
+Stworz przykladowych 5 plikow html, 4 csv i 3 SQL
+Nastpenie umiesc wszystkie pliki w kolekcji i zapisz na dysk kazdy plikw petli
