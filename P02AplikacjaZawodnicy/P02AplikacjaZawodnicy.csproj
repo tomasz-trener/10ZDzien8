@@ -36,6 +36,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NullableDateTimePicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NullableDateTimePicker.Designer.cs">
+      <DependentUpon>NullableDateTimePicker.cs</DependentUpon>
+    </Compile>
     <Compile Include="Operations\MiastaOperation.cs" />
     <Compile Include="Operations\SkocznieOperation.cs" />
     <Compile Include="Operations\ZawodnicyOperation.cs" />
@@ -86,6 +93,9 @@
     <Compile Include="Views\FrmSzczegoly.Designer.cs">
       <DependentUpon>FrmSzczegoly.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="NullableDateTimePicker.resx">
+      <DependentUpon>NullableDateTimePicker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmMiasta.resx">
       <DependentUpon>FrmMiasta.cs</DependentUpon>
     </EmbeddedResource>

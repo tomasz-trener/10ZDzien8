@@ -29,6 +29,9 @@ namespace P02AplikacjaZawodnicy.Views
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.lbDane = new System.Windows.Forms.ListBox();
             this.btnDodaj = new System.Windows.Forms.Button();
             this.btnEdytuj = new System.Windows.Forms.Button();
@@ -45,8 +48,13 @@ namespace P02AplikacjaZawodnicy.Views
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cbSortowanie = new System.Windows.Forms.ComboBox();
+            this.btnPrawo = new System.Windows.Forms.Button();
+            this.btnLewo = new System.Windows.Forms.Button();
+            this.txtStrona = new System.Windows.Forms.TextBox();
+            this.chWykres = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chWykres)).BeginInit();
             this.SuspendLayout();
             // 
             // lbDane
@@ -54,7 +62,7 @@ namespace P02AplikacjaZawodnicy.Views
             this.lbDane.FormattingEnabled = true;
             this.lbDane.Location = new System.Drawing.Point(22, 72);
             this.lbDane.Name = "lbDane";
-            this.lbDane.Size = new System.Drawing.Size(208, 212);
+            this.lbDane.Size = new System.Drawing.Size(208, 186);
             this.lbDane.TabIndex = 0;
             this.lbDane.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbDane_MouseDown);
             this.lbDane.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbDane_MouseMove);
@@ -210,11 +218,59 @@ namespace P02AplikacjaZawodnicy.Views
             this.cbSortowanie.Size = new System.Drawing.Size(142, 21);
             this.cbSortowanie.TabIndex = 13;
             // 
+            // btnPrawo
+            // 
+            this.btnPrawo.Location = new System.Drawing.Point(170, 264);
+            this.btnPrawo.Name = "btnPrawo";
+            this.btnPrawo.Size = new System.Drawing.Size(60, 23);
+            this.btnPrawo.TabIndex = 14;
+            this.btnPrawo.Text = "->";
+            this.btnPrawo.UseVisualStyleBackColor = true;
+            this.btnPrawo.Click += new System.EventHandler(this.btnPrawo_Click);
+            // 
+            // btnLewo
+            // 
+            this.btnLewo.Location = new System.Drawing.Point(22, 264);
+            this.btnLewo.Name = "btnLewo";
+            this.btnLewo.Size = new System.Drawing.Size(60, 23);
+            this.btnLewo.TabIndex = 15;
+            this.btnLewo.Text = "<-";
+            this.btnLewo.UseVisualStyleBackColor = true;
+            this.btnLewo.Click += new System.EventHandler(this.btnLewo_Click);
+            // 
+            // txtStrona
+            // 
+            this.txtStrona.Location = new System.Drawing.Point(89, 266);
+            this.txtStrona.Name = "txtStrona";
+            this.txtStrona.Size = new System.Drawing.Size(75, 20);
+            this.txtStrona.TabIndex = 16;
+            this.txtStrona.Text = "1";
+            // 
+            // chWykres
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chWykres.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chWykres.Legends.Add(legend1);
+            this.chWykres.Location = new System.Drawing.Point(859, 39);
+            this.chWykres.Name = "chWykres";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chWykres.Series.Add(series1);
+            this.chWykres.Size = new System.Drawing.Size(368, 242);
+            this.chWykres.TabIndex = 17;
+            this.chWykres.Text = "chart1";
+            // 
             // FrmZawodnicy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(880, 293);
+            this.ClientSize = new System.Drawing.Size(1252, 293);
+            this.Controls.Add(this.chWykres);
+            this.Controls.Add(this.txtStrona);
+            this.Controls.Add(this.btnLewo);
+            this.Controls.Add(this.btnPrawo);
             this.Controls.Add(this.cbSortowanie);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -228,6 +284,7 @@ namespace P02AplikacjaZawodnicy.Views
             this.Text = "Form1";
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chWykres)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -251,6 +308,10 @@ namespace P02AplikacjaZawodnicy.Views
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbSortowanie;
+        private System.Windows.Forms.Button btnPrawo;
+        private System.Windows.Forms.Button btnLewo;
+        private System.Windows.Forms.TextBox txtStrona;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chWykres;
     }
 }
 

@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="A_Zawodnicy" Class="ModelBazyDanychDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=A_Zawodnicy;User ID=sa" SettingsObjectName="P03AplikacjaZawodnicy.Core.Properties.Settings" SettingsPropertyName="A_ZawodnicyConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.trenerzy" Member="Trener">
+    <Type Name="Trener">
+      <Column Name="id_trenera" Member="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="imie_t" Member="Imie" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="nazwisko_t" Member="Nazwisko" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="data_ur_t" Member="DataUr" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Trener_Zawodnik" Member="Zawodnik" ThisKey="Id" OtherKey="IdTrenera" Type="Zawodnik" />
+    </Type>
+  </Table>
   <Table Name="dbo.zawodnicy" Member="Zawodnik">
     <Type Name="Zawodnik">
       <Column Name="id_zawodnika" Member="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -7,25 +16,28 @@
       <Column Name="imie" Member="Imie" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
       <Column Name="nazwisko" Member="Nazwisko" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
       <Column Name="kraj" Member="Kraj" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="data_ur" Member="DataUr" Storage="_Data_ur" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="data_ur" Member="DataUr" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="wzrost" Member="Wzrost" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="waga" Member="Waga" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Trener_Zawodnik" Member="Trener" ThisKey="IdTrenera" OtherKey="Id" Type="Trener" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.skocznie" Member="Skocznia">
     <Type Name="Skocznia">
       <Column Name="id_skoczni" Member="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="id_miasta" Member="IdMiasta" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="id_miasta" Member="IdMiasta" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="nazwa_skoczni" Member="Nazwa" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="k" Member="K" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="sedz" Member="Sedz" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="kraj_skoczni" Member="Kraj" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="miasta_skocznie" Member="Miasto" ThisKey="IdMiasta" OtherKey="Id" Type="Miasto" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.miasta" Member="Miasto">
     <Type Name="Miasto">
       <Column Name="id_miasta" Member="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="nazwa_miasta" Member="Nazwa" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="miasta_skocznie" Member="Skocznia" ThisKey="Id" OtherKey="IdMiasta" Type="Skocznia" />
     </Type>
   </Table>
 </Database>

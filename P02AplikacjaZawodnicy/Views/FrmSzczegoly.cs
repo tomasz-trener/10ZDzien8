@@ -66,8 +66,10 @@ namespace P02AplikacjaZawodnicy.Views
             txtImie.Text = z.Imie;
             txtNazwisko.Text = z.Nazwisko;
             txtKraj.Text = z.Kraj;
-            if (z.DataUr != null)
-                dtpDataUrodzenia.Value = (DateTime)z.DataUr;
+            // if (z.DataUr != null)
+            //      dtpDataUrodzenia.Value = (DateTime)z.DataUr;
+            dtpDataUr.Wartosc = z.DataUr;
+
             if (z.Waga != null)
                 numWaga.Value = (int) z.Waga;
             if(z.Wzrost != null)
@@ -109,7 +111,7 @@ namespace P02AplikacjaZawodnicy.Views
             z.Imie = txtImie.Text;
             z.Nazwisko = txtNazwisko.Text;
             z.Kraj = txtKraj.Text;
-            z.DataUr = dtpDataUrodzenia.Value;
+            z.DataUr = dtpDataUr.Wartosc;
             z.Waga = Convert.ToInt32(numWaga.Value);
             z.Wzrost = Convert.ToInt32(numWzrost.Value);
             z.IdTrenera = ((Trener)cbTrenerzy.SelectedItem).Id;

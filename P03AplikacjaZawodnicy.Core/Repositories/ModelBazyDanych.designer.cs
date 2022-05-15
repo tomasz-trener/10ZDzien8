@@ -30,6 +30,9 @@ namespace P03AplikacjaZawodnicy.Core.Repositories
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void InsertTrener(Trener instance);
+    partial void UpdateTrener(Trener instance);
+    partial void DeleteTrener(Trener instance);
     partial void InsertZawodnik(Zawodnik instance);
     partial void UpdateZawodnik(Zawodnik instance);
     partial void DeleteZawodnik(Zawodnik instance);
@@ -71,6 +74,14 @@ namespace P03AplikacjaZawodnicy.Core.Repositories
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<Trener> Trener
+		{
+			get
+			{
+				return this.GetTable<Trener>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Zawodnik> Zawodnik
 		{
 			get
@@ -96,6 +107,168 @@ namespace P03AplikacjaZawodnicy.Core.Repositories
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.trenerzy")]
+	public partial class Trener : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Imie;
+		
+		private string _Nazwisko;
+		
+		private System.Nullable<System.DateTime> _DataUr;
+		
+		private EntitySet<Zawodnik> _Zawodnik;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnImieChanging(string value);
+    partial void OnImieChanged();
+    partial void OnNazwiskoChanging(string value);
+    partial void OnNazwiskoChanged();
+    partial void OnDataUrChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataUrChanged();
+    #endregion
+		
+		public Trener()
+		{
+			this._Zawodnik = new EntitySet<Zawodnik>(new Action<Zawodnik>(this.attach_Zawodnik), new Action<Zawodnik>(this.detach_Zawodnik));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_trenera", Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="imie_t", Storage="_Imie", DbType="VarChar(255)")]
+		public string Imie
+		{
+			get
+			{
+				return this._Imie;
+			}
+			set
+			{
+				if ((this._Imie != value))
+				{
+					this.OnImieChanging(value);
+					this.SendPropertyChanging();
+					this._Imie = value;
+					this.SendPropertyChanged("Imie");
+					this.OnImieChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="nazwisko_t", Storage="_Nazwisko", DbType="VarChar(255)")]
+		public string Nazwisko
+		{
+			get
+			{
+				return this._Nazwisko;
+			}
+			set
+			{
+				if ((this._Nazwisko != value))
+				{
+					this.OnNazwiskoChanging(value);
+					this.SendPropertyChanging();
+					this._Nazwisko = value;
+					this.SendPropertyChanged("Nazwisko");
+					this.OnNazwiskoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="data_ur_t", Storage="_DataUr", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DataUr
+		{
+			get
+			{
+				return this._DataUr;
+			}
+			set
+			{
+				if ((this._DataUr != value))
+				{
+					this.OnDataUrChanging(value);
+					this.SendPropertyChanging();
+					this._DataUr = value;
+					this.SendPropertyChanged("DataUr");
+					this.OnDataUrChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Trener_Zawodnik", Storage="_Zawodnik", ThisKey="Id", OtherKey="IdTrenera")]
+		public EntitySet<Zawodnik> Zawodnik
+		{
+			get
+			{
+				return this._Zawodnik;
+			}
+			set
+			{
+				this._Zawodnik.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Zawodnik(Zawodnik entity)
+		{
+			this.SendPropertyChanging();
+			entity.Trener = this;
+		}
+		
+		private void detach_Zawodnik(Zawodnik entity)
+		{
+			this.SendPropertyChanging();
+			entity.Trener = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.zawodnicy")]
 	public partial class Zawodnik : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -112,11 +285,13 @@ namespace P03AplikacjaZawodnicy.Core.Repositories
 		
 		private string _Kraj;
 		
-		private System.Nullable<System.DateTime> _Data_ur;
+		private System.Nullable<System.DateTime> _DataUr;
 		
 		private System.Nullable<int> _Wzrost;
 		
 		private System.Nullable<int> _Waga;
+		
+		private EntityRef<Trener> _Trener;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -142,6 +317,7 @@ namespace P03AplikacjaZawodnicy.Core.Repositories
 		
 		public Zawodnik()
 		{
+			this._Trener = default(EntityRef<Trener>);
 			OnCreated();
 		}
 		
@@ -245,20 +421,20 @@ namespace P03AplikacjaZawodnicy.Core.Repositories
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="data_ur", Storage="_Data_ur", DbType="DateTime")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="data_ur", Storage="_DataUr", DbType="DateTime")]
 		public System.Nullable<System.DateTime> DataUr
 		{
 			get
 			{
-				return this._Data_ur;
+				return this._DataUr;
 			}
 			set
 			{
-				if ((this._Data_ur != value))
+				if ((this._DataUr != value))
 				{
 					this.OnDataUrChanging(value);
 					this.SendPropertyChanging();
-					this._Data_ur = value;
+					this._DataUr = value;
 					this.SendPropertyChanged("DataUr");
 					this.OnDataUrChanged();
 				}
@@ -305,6 +481,40 @@ namespace P03AplikacjaZawodnicy.Core.Repositories
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Trener_Zawodnik", Storage="_Trener", ThisKey="IdTrenera", OtherKey="Id", IsForeignKey=true)]
+		public Trener Trener
+		{
+			get
+			{
+				return this._Trener.Entity;
+			}
+			set
+			{
+				Trener previousValue = this._Trener.Entity;
+				if (((previousValue != value) 
+							|| (this._Trener.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Trener.Entity = null;
+						previousValue.Zawodnik.Remove(this);
+					}
+					this._Trener.Entity = value;
+					if ((value != null))
+					{
+						value.Zawodnik.Add(this);
+						this._IdTrenera = value.Id;
+					}
+					else
+					{
+						this._IdTrenera = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Trener");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -334,7 +544,7 @@ namespace P03AplikacjaZawodnicy.Core.Repositories
 		
 		private int _Id;
 		
-		private string _IdMiasta;
+		private System.Nullable<int> _IdMiasta;
 		
 		private string _Nazwa;
 		
@@ -344,13 +554,15 @@ namespace P03AplikacjaZawodnicy.Core.Repositories
 		
 		private string _Kraj;
 		
+		private EntityRef<Miasto> _Miasto;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
     partial void OnIdChanging(int value);
     partial void OnIdChanged();
-    partial void OnIdMiastaChanging(string value);
+    partial void OnIdMiastaChanging(System.Nullable<int> value);
     partial void OnIdMiastaChanged();
     partial void OnNazwaChanging(string value);
     partial void OnNazwaChanged();
@@ -364,6 +576,7 @@ namespace P03AplikacjaZawodnicy.Core.Repositories
 		
 		public Skocznia()
 		{
+			this._Miasto = default(EntityRef<Miasto>);
 			OnCreated();
 		}
 		
@@ -387,8 +600,8 @@ namespace P03AplikacjaZawodnicy.Core.Repositories
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_miasta", Storage="_IdMiasta", DbType="VarChar(50)")]
-		public string IdMiasta
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_miasta", Storage="_IdMiasta", DbType="Int")]
+		public System.Nullable<int> IdMiasta
 		{
 			get
 			{
@@ -487,6 +700,40 @@ namespace P03AplikacjaZawodnicy.Core.Repositories
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="miasta_skocznie", Storage="_Miasto", ThisKey="IdMiasta", OtherKey="Id", IsForeignKey=true)]
+		public Miasto Miasto
+		{
+			get
+			{
+				return this._Miasto.Entity;
+			}
+			set
+			{
+				Miasto previousValue = this._Miasto.Entity;
+				if (((previousValue != value) 
+							|| (this._Miasto.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Miasto.Entity = null;
+						previousValue.Skocznia.Remove(this);
+					}
+					this._Miasto.Entity = value;
+					if ((value != null))
+					{
+						value.Skocznia.Add(this);
+						this._IdMiasta = value.Id;
+					}
+					else
+					{
+						this._IdMiasta = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Miasto");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -518,6 +765,8 @@ namespace P03AplikacjaZawodnicy.Core.Repositories
 		
 		private string _Nazwa;
 		
+		private EntitySet<Skocznia> _Skocznia;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -530,6 +779,7 @@ namespace P03AplikacjaZawodnicy.Core.Repositories
 		
 		public Miasto()
 		{
+			this._Skocznia = new EntitySet<Skocznia>(new Action<Skocznia>(this.attach_Skocznia), new Action<Skocznia>(this.detach_Skocznia));
 			OnCreated();
 		}
 		
@@ -573,6 +823,19 @@ namespace P03AplikacjaZawodnicy.Core.Repositories
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="miasta_skocznie", Storage="_Skocznia", ThisKey="Id", OtherKey="IdMiasta")]
+		public EntitySet<Skocznia> Skocznia
+		{
+			get
+			{
+				return this._Skocznia;
+			}
+			set
+			{
+				this._Skocznia.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -591,6 +854,18 @@ namespace P03AplikacjaZawodnicy.Core.Repositories
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Skocznia(Skocznia entity)
+		{
+			this.SendPropertyChanging();
+			entity.Miasto = this;
+		}
+		
+		private void detach_Skocznia(Skocznia entity)
+		{
+			this.SendPropertyChanging();
+			entity.Miasto = null;
 		}
 	}
 }

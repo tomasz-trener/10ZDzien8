@@ -1,6 +1,7 @@
 ﻿using P03AplikacjaZawodnicy.Core.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,8 +10,8 @@ namespace P03AplikacjaZawodnicy.Core.Core.Repositories
 {
     public class ZawodnicyRepository
     {
-
-        public Zawodnik[] WczytajZawodnikow(string filtr = null, string sortowanie = null)
+         
+        public Zawodnik[] WczytajZawodnikow(string filtr = null, string sortowanie = null, int? strona = null)
         {
             ModelBazyDanychDataContext db = new ModelBazyDanychDataContext();
 
@@ -25,6 +26,7 @@ namespace P03AplikacjaZawodnicy.Core.Core.Repositories
 
             if (sortowanie != null)
             {
+                
                 if (sortowanie == "Imie")
                     zapytanie = zapytanie.OrderBy(x => x.Imie);
                 if (sortowanie == "Nazwisko")
@@ -32,6 +34,10 @@ namespace P03AplikacjaZawodnicy.Core.Core.Repositories
                 if (sortowanie == "Kraj")
                     zapytanie = zapytanie.OrderBy(x => x.Kraj);
             }
+
+            int rozmiarStrony = Convert.ToInt32(ConfigurationManager.AppSettings["rozmiarStrony"]);
+            if(strona != null)
+                zapytanie = zapytanie.Skip(rozmiarStrony*((int)strona-1)).Take(rozmiarStrony);
 
             return zapytanie.ToArray(); // dopiero teraz idzie zapytanie do bazy danych 
 

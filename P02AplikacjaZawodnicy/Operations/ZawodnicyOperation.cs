@@ -31,23 +31,25 @@ namespace P02AplikacjaZawodnicy.Operations
                 Waga = z.Waga,
             };
         }
-        public ZawodnikVM[] PodajZawodnikowZBazy(string filtr =null, string sortowanie=null)
+        public ZawodnikVM[] PodajZawodnikowZBazy(string filtr =null, string sortowanie=null, int? strona = null)
         {
             ZawodnicyRepository zr = new ZawodnicyRepository();
-            var zawodnicy = zr.WczytajZawodnikow(filtr, sortowanie);
+            var zawodnicy = zr.WczytajZawodnikow(filtr, sortowanie, strona);
 
             // rolą operacji jest (miedzy innymi)  zeby przetransformowac obiekt bazodanowy na obiekt ViewModel, który bedzie wyswietlany na widoku 
-            
+
             //moze być tak, że niektore pola w bazie bedą trochę inne niz pola na interfejsie graficznym np: taka sytuacja jest w przypadku daty 
             // gdzie w bazie danych data moze byc pusta (null) ale nasz interfejs graficzny nie pozwala technicze na ustawienie pustej daty 
-           return zawodnicy.Select(x => new ZawodnikVM()
+            return zawodnicy.Select(x => new ZawodnikVM()
             {
                 Id = x.Id,
                 Imie = x.Imie,
                 Nazwisko = x.Nazwisko,
                 Kraj = x.Kraj,
-                DataUr = x.DataUr == null ? DateTime.Now : (DateTime)x.DataUr,
+                DataUr = x.DataUr,
+                //DataUr = x.DataUr == null ? DateTime.Now : (DateTime)x.DataUr, to zabezpiecznie bylo potrzebny wtedy gdy nasz widok nie przyjmowal wartosci pustych (bo technicznie nie dalo stego zrobic) ale po zrobieniu walnego datetime pickera , ktory przyjmuje wartosci null mozmey je usunac 
                 Wzrost = x.Wzrost,
+                ImieNazwiskoTrenera = x.Trener?.Imie + " " + x.Trener?.Nazwisko,
                 Waga = x.Waga == null ? 0 : (int)x.Waga
             }).ToArray();
         }

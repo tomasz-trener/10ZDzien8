@@ -24,16 +24,23 @@ namespace P02AplikacjaZawodnicy.Views
         {
             SkocznieOperation so = new SkocznieOperation();
             var skocznie=  so.PodajSkocznieZBazy();
-
+            
             lvDane.Items.Clear();
-
+            
             ImageList listaObrazow = new ImageList();
+
+
+            List<ListViewGroup> grupy = new List<ListViewGroup>();
 
             string[] kraje = skocznie.Select(x => x.Kraj.ToLower()).Distinct().ToArray();
             foreach (var k in kraje)
             {
                 if(File.Exists($@"flagi\{k}.png"))
                     listaObrazow.Images.Add(k, Image.FromFile($@"flagi\{k}.png"));
+
+                ListViewGroup lvg = new ListViewGroup() { Header = k, Name = k };
+                grupy.Add(lvg);
+                lvDane.Groups.Add(lvg);
             }
             lvDane.LargeImageList = listaObrazow;
 
@@ -43,7 +50,8 @@ namespace P02AplikacjaZawodnicy.Views
                 {
                     Text = s.Nazwa,
                     ImageKey = s.Kraj.ToLower(), 
-                    Tag = s
+                    Tag = s,
+                    Group = grupy.FirstOrDefault(x=>x.Name==s.Kraj.ToLower())
                 }) ;
             }    
         }

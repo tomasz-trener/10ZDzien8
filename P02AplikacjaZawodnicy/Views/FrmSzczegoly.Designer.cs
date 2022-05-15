@@ -29,7 +29,6 @@ namespace P02AplikacjaZawodnicy.Views
         /// </summary>
         private void InitializeComponent()
         {
-            this.dtpDataUrodzenia = new System.Windows.Forms.DateTimePicker();
             this.numWaga = new System.Windows.Forms.NumericUpDown();
             this.txtImie = new System.Windows.Forms.TextBox();
             this.numWzrost = new System.Windows.Forms.NumericUpDown();
@@ -45,17 +44,10 @@ namespace P02AplikacjaZawodnicy.Views
             this.btnUsun = new System.Windows.Forms.Button();
             this.cbTrenerzy = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.dtpDataUr = new P02AplikacjaZawodnicy.NullableDateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.numWaga)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numWzrost)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dtpDataUrodzenia
-            // 
-            this.dtpDataUrodzenia.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataUrodzenia.Location = new System.Drawing.Point(29, 164);
-            this.dtpDataUrodzenia.Name = "dtpDataUrodzenia";
-            this.dtpDataUrodzenia.Size = new System.Drawing.Size(174, 20);
-            this.dtpDataUrodzenia.TabIndex = 29;
             // 
             // numWaga
             // 
@@ -195,16 +187,24 @@ namespace P02AplikacjaZawodnicy.Views
             this.label7.TabIndex = 35;
             this.label7.Text = "Trener";
             // 
+            // dtpDataUr
+            // 
+            this.dtpDataUr.Location = new System.Drawing.Point(29, 165);
+            this.dtpDataUr.Name = "dtpDataUr";
+            this.dtpDataUr.Size = new System.Drawing.Size(175, 21);
+            this.dtpDataUr.TabIndex = 36;
+            this.dtpDataUr.Wartosc = null;
+            // 
             // FrmSzczegoly
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(223, 374);
+            this.Controls.Add(this.dtpDataUr);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.cbTrenerzy);
             this.Controls.Add(this.btnUsun);
             this.Controls.Add(this.btnZapisz);
-            this.Controls.Add(this.dtpDataUrodzenia);
             this.Controls.Add(this.numWaga);
             this.Controls.Add(this.txtImie);
             this.Controls.Add(this.numWzrost);
@@ -226,8 +226,6 @@ namespace P02AplikacjaZawodnicy.Views
         }
 
         #endregion
-
-        private System.Windows.Forms.DateTimePicker dtpDataUrodzenia;
         private System.Windows.Forms.NumericUpDown numWaga;
         private System.Windows.Forms.TextBox txtImie;
         private System.Windows.Forms.NumericUpDown numWzrost;
@@ -243,5 +241,6 @@ namespace P02AplikacjaZawodnicy.Views
         private System.Windows.Forms.Button btnUsun;
         private System.Windows.Forms.ComboBox cbTrenerzy;
         private System.Windows.Forms.Label label7;
+        private NullableDateTimePicker dtpDataUr;
     }
 }

@@ -1,24 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="ModelBazyDanych">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.125, 8.5" name="ModelBazyDanych">
   <DataContextMoniker Name="/ModelBazyDanychDataContext" />
   <nestedChildShapes>
-    <classShape Id="71ca968c-d211-4471-909d-a34f90fbc7c7" absoluteBounds="5.5, 1.875, 2, 2.3478011067708335">
+    <classShape Id="f61d9050-a1d4-4efc-a172-ca119a178506" absoluteBounds="3.875, 3.25, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/ModelBazyDanychDataContext/Trener" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a94a2413-e085-47c2-8ba2-98c895abc569" absoluteBounds="3.8899999999999997, 3.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8265881a-8f19-493e-a29a-e0141e632bf2" absoluteBounds="7.125, 3, 2, 2.3478011067708335">
       <DataClassMoniker Name="/ModelBazyDanychDataContext/Zawodnik" />
       <nestedChildShapes>
-        <elementListCompartment Id="68f7532f-281e-482d-9cbb-3f245fc702e7" absoluteBounds="5.515, 2.335, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="d227d81b-b818-4100-80d4-37cd41fd9fba" absoluteBounds="7.14, 3.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="13529104-ad84-4146-957e-782903c65307" absoluteBounds="8.375, 1.75, 2, 1.9631982421875">
+    <associationConnector edgePoints="[(5.875 : 4.03929768880208); (7.125 : 4.03929768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ModelBazyDanychDataContext/Trener/Trener_Zawodnik" />
+      <nodes>
+        <classShapeMoniker Id="f61d9050-a1d4-4efc-a172-ca119a178506" />
+        <classShapeMoniker Id="8265881a-8f19-493e-a29a-e0141e632bf2" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="1d455a76-3193-4bf2-b3e0-e1c3b29e0e94" absoluteBounds="8.875, 6, 2, 1.9631982421875005">
       <DataClassMoniker Name="/ModelBazyDanychDataContext/Skocznia" />
       <nestedChildShapes>
-        <elementListCompartment Id="23820fa5-1235-4d16-bcc5-7df9bf6b2b9a" absoluteBounds="8.39, 2.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="e3dfaec8-67b4-4423-9081-e187259e9bb9" absoluteBounds="8.89, 6.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="a2e0a987-5a23-47f5-a08f-93a259e5764e" absoluteBounds="1.625, 1, 2, 1.1939925130208333">
+    <classShape Id="67485569-5355-4a49-bac3-6facfb544713" absoluteBounds="5.125, 6.25, 2, 1.1939925130208326">
       <DataClassMoniker Name="/ModelBazyDanychDataContext/Miasto" />
       <nestedChildShapes>
-        <elementListCompartment Id="6f252986-338b-43aa-a9d1-bf0a1a3933fb" absoluteBounds="1.6400000000000001, 1.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="536f322f-8a1b-4b94-a9c4-5478022f15a7" absoluteBounds="5.14, 6.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <associationConnector edgePoints="[(7.125 : 6.84699625651042); (8.875 : 6.84699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ModelBazyDanychDataContext/Miasto/miasta_skocznie" />
+      <nodes>
+        <classShapeMoniker Id="67485569-5355-4a49-bac3-6facfb544713" />
+        <classShapeMoniker Id="1d455a76-3193-4bf2-b3e0-e1c3b29e0e94" />
+      </nodes>
+    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

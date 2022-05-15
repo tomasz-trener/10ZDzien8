@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace P02AplikacjaZawodnicy.Views
 {
@@ -25,14 +26,34 @@ namespace P02AplikacjaZawodnicy.Views
         private void btnWczytaj_Click(object sender, EventArgs e)
         {
             Odswiez();
+            
+        }
+
+        private void WygenerujWykres() 
+        {
+            var zawodnicy = (ZawodnikVM[])lbDane.DataSource;
+
+            chWykres.Series.Clear();
+
+            Series seria = new Series("Wzrost");
+            seria.ChartType = SeriesChartType.Column;
+
+            string[] osX = zawodnicy.Select(x => x.Nazwisko).ToArray();
+            int?[] osY = zawodnicy.Select(x => x.Wzrost).ToArray();
+            seria.Points.DataBindXY(osX, osY);
+
+            chWykres.ChartAreas[0].AxisX.LabelStyle.Angle = 90;
+
+            chWykres.Series.Add(seria);
         }
 
         public void Odswiez()
         {
             ZawodnicyOperation zo = new ZawodnicyOperation();
-            ZawodnikVM[] zawodnicy = zo.PodajZawodnikowZBazy(txtFiltr.Text, cbSortowanie.Text);
+            ZawodnikVM[] zawodnicy = zo.PodajZawodnikowZBazy(txtFiltr.Text, cbSortowanie.Text, Convert.ToInt32(txtStrona.Text));
             lbDane.DataSource = zawodnicy;
             lbDane.DisplayMember = "Wiersz"; // to musi być właściwość (a nie pole)
+            WygenerujWykres();
         }
 
         private void btnDodaj_Click(object sender, EventArgs e)
@@ -122,6 +143,22 @@ namespace P02AplikacjaZawodnicy.Views
         {
             FrmMiasta frmMiasta = new FrmMiasta();
             frmMiasta.Show();
+        }
+
+        private void btnLewo_Click(object sender, EventArgs e)
+        {
+            int strona = Convert.ToInt32(txtStrona.Text);
+            if (strona > 1)
+            {
+                txtStrona.Text = Convert.ToString(strona - 1);
+                Odswiez();
+            }
+        }
+
+        private void btnPrawo_Click(object sender, EventArgs e)
+        {
+            txtStrona.Text = Convert.ToString(Convert.ToInt32(txtStrona.Text) + 1);
+            Odswiez();
         }
     }
 }
